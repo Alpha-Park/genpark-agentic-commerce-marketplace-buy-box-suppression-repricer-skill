@@ -1,0 +1,65 @@
+{
+  "name": "genpark-agentic-commerce-marketplace-buy-box-suppression-repricer-skill",
+  "version": "1.0.0",
+  "title": "Marketplace Buy Box Suppression Repricer & Margin Guard Skill",
+  "description": "Amazon reference price buy box suppression detector, off-Amazon competitive pricing floor sync, and algorithmic buy-box restoration re-pricer. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "buy-box",
+    "repricing",
+    "suppression-detector",
+    "marketplace-arbitrage",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "diagnose_buy_box_suppression_cause",
+      "description": "Identify root cause of Buy Box suppression (External Competitive Price vs List Price Anchor violation).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "current_listing_price_usd": {
+            "type": "number"
+          },
+          "amazon_reference_price_usd": {
+            "type": "number"
+          },
+          "walmart_lowest_price_usd": {
+            "type": "number"
+          },
+          "min_margin_floor_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "current_listing_price_usd",
+          "amazon_reference_price_usd",
+          "min_margin_floor_usd"
+        ]
+      }
+    },
+    {
+      "name": "synthesize_buy_box_restoration_price",
+      "description": "Compute optimal restoration price to regain Buy Box without breaching profitability floor.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "target_competitive_price_usd": {
+            "type": "number"
+          },
+          "min_margin_floor_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "target_competitive_price_usd",
+          "min_margin_floor_usd"
+        ]
+      }
+    }
+  ]
+}
